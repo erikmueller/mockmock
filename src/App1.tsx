@@ -1,5 +1,28 @@
 import { useQuery } from "react-query";
-import { getPeople, getPeople2, getPeople3 } from "./api/getPeople";
+import { client } from "./api/client";
+
+const getPeople = async (id: number) => {
+  try {
+    const response = await client.get(`/people/${id}`);
+
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
+const getPeople2 = async (id: number) => {
+  try {
+    const response = await client({
+      method: "GET",
+      url: `/people/${id}`,
+    });
+
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
 
 const App = (): JSX.Element => {
   const { data } = useQuery("people1", () => getPeople(1));

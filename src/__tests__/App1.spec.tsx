@@ -8,14 +8,14 @@ vi.mock("../api/client", () => {
   }));
 
   return {
-    instance: {
+    client: {
       get: mockRequest,
     },
   };
 });
 
 it("renders with data", async () => {
-  const { findByText } = renderWithProvider(<App />);
+  const { debug, findByText } = renderWithProvider(<App />);
 
   await findByText(/Name: Han/);
 });

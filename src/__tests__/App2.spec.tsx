@@ -10,7 +10,8 @@ global.fetch = vi.fn(async () => ({
 }));
 
 it("renders with data", async () => {
-  const { findByText } = renderWithProvider(<App />);
+  const { debug, findByText } = renderWithProvider(<App />);
 
   await findByText(/Name: Han/);
+  debug();
 });
